@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include "Figure.h";
 #include "Point.h"
+#include "Digital.h"
 
 namespace Tetris {
 	inline constexpr int TILE_SIZE { 18 };
@@ -26,6 +27,10 @@ namespace Tetris {
 		std::vector<Tetris::Point> figureFieldPoints;
 		std::vector<Tetris::Point> prevFigureFieldPoints;
 		int score = 0;
+		Digital points;
+		Digital cleans;
+		Digital level;
+		int next;
 	public:
 		Application();
 	private:

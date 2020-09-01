@@ -45,7 +45,7 @@ namespace Tetris {
 		void Render(sf::RenderWindow& window, sf::Sprite sprite) {
 			sprite.setTextureRect(sf::IntRect(0, 0, tileSize, tileSize));
 			for (int i = 0; i < 4; ++i) {
-				sprite.setPosition(fieldPositions[i].x * tileSize, fieldPositions[i].y * tileSize);
+				sprite.setPosition(fieldPositions[i].x * tileSize + 4, fieldPositions[i].y * tileSize + 4);
 				window.draw(sprite);
 			}
 		}
@@ -114,6 +114,24 @@ namespace Tetris {
 			for (int i = 0; i < 4; ++i) {
 				field[fieldPositions[i].y][fieldPositions[i].x] = 2;
 			}
+		}
+
+		void RenderNext(sf::RenderWindow& window, sf::Sprite sprite, int n) {
+			sprite.setTextureRect(sf::IntRect(tileSize, 0, tileSize, tileSize));
+			
+			for (int i = 0; i < 2; ++i) {
+				for (int j = 0; j < 4; ++j) {
+					sprite.setPosition(i * tileSize + 199, j * tileSize + 170);
+					window.draw(sprite);
+				}
+			}
+			
+			for (int i = 0; i < 4; ++i) {
+				sprite.setTextureRect(sf::IntRect(0, 0, tileSize, tileSize));
+				sprite.setPosition((figures[n][i] % 2) * tileSize + 199, (figures[n][i] / 2) * tileSize + 170);
+				window.draw(sprite);
+			}
+			
 		}
 
 	};
